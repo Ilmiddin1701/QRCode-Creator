@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FFEDED"
+    android:gravity="center"
+    android:orientation="vertical"
+    tools:context=".MainActivity">
+
+    <ImageView
+        android:id="@+id/qrImage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:layout_marginBottom="5dp"
+        android:visibility="gone"
+        android:contentDescription="@string/qr_image" />
+
+    <FrameLayout
+        android:id="@+id/edtFocus"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_margin="10dp"
+        android:layout_weight="1"
+        android:background="@drawable/edt_style">
+
+        <ScrollView
+            android:id="@+id/scrollView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="10dp"
+            tools:ignore="UselessParent">
+
+            <EditText
+                android:id="@+id/edt"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@android:color/transparent"
+                android:hint="@string/ma_lumot_kiriting"
+                android:textColor="@color/black"
+                android:textColorHint="#8F8F8F"
+                android:textSize="20sp"
+                android:importantForAutofill="no"
+                tools:ignore="TextFields" />
+        </ScrollView>
+    </FrameLayout>
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnExport"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginBottom="10dp"
+        android:backgroundTint="#4CAF50"
+        android:text="@string/exsport_pdf"
+        android:textColor="@color/white"
+        android:textSize="18sp"
+        app:cornerRadius="10dp" />
+</LinearLayout>

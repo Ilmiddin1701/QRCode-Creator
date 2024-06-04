@@ -1,0 +1,6 @@
+<resources>
+    <string name="app_name">QRCode Creator</string>
+    <string name="ma_lumot_kiriting">Ma\'lumot kiriting</string>
+    <string name="exsport_pdf">Exsport PDF</string>
+    <string name="qr_image">qrImage</string>
+</resources>
