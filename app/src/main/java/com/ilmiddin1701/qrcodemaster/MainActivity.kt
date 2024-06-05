@@ -55,7 +55,11 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         binding.apply {
-            edt.addTextChangedListener { qrImage.visibility = View.GONE }
+            edt.addTextChangedListener {
+                qrImage.visibility = View.GONE
+                btnSave.visibility = View.GONE
+                btnGenerate.visibility = View.VISIBLE
+            }
             edtFocus.setOnClickListener { showKeyboard(edt) }
             permissionLauncher = registerForActivityResult(ActivityResultContracts.RequestMultiplePermissions()) {
                 writePermissionGranted = it[Manifest.permission.WRITE_EXTERNAL_STORAGE] ?: writePermissionGranted
