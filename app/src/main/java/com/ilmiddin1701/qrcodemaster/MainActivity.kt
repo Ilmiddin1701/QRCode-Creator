@@ -18,7 +18,9 @@ import android.content.pm.PackageManager
 import android.graphics.drawable.BitmapDrawable
 import android.os.Build
 import android.os.Environment
+import android.os.Handler
 import android.provider.MediaStore
+import android.view.animation.AnimationUtils
 import android.widget.ImageView
 import android.widget.Toast
 import androidx.activity.result.ActivityResultLauncher
@@ -41,7 +43,7 @@ import java.util.Locale
 
 class MainActivity : AppCompatActivity() {
     private val binding by lazy { ActivityMainBinding.inflate(layoutInflater) }
-    private var dspName: String = "IMG_${SimpleDateFormat("yyyyMMddHHmmss", Locale.getDefault()).format(Date())}.pdf"
+    private var dspName: String = "IMG_${SimpleDateFormat("yyyyMMddHHmmss", Locale.getDefault()).format(Date())}"
 
     private var writePermissionGranted = false
     private lateinit var permissionLauncher: ActivityResultLauncher<Array<String>>
@@ -59,14 +61,30 @@ class MainActivity : AppCompatActivity() {
                 writePermissionGranted = it[Manifest.permission.WRITE_EXTERNAL_STORAGE] ?: writePermissionGranted
             }
             updateOrRequestPermission()
-            btnExport.setOnClickListener {
+            val anim1 = AnimationUtils.loadAnimation(this@MainActivity, R.anim.anim1)
+            val anim2 = AnimationUtils.loadAnimation(this@MainActivity, R.anim.anim2)
+            btnGenerate.setOnClickListener {
                 if (edt.text.toString().isNotEmpty()) {
-                    if (writePermissionGranted) {
-                        qrImage.visibility = View.VISIBLE
-                        qrImage.setImageBitmap(generateQRCode(edt.text.toString()))
-                        saveToExternalStorage(dspName, btm)
-                        Toast.makeText(this@MainActivity, "Saved", Toast.LENGTH_SHORT).show()
-                    }
+                    qrImage.visibility = View.VISIBLE
+                    btnGenerate.startAnimation(anim2)
+                    btnGenerate.visibility = View.GONE
+                    btnSave.startAnimation(anim1)
+                    btnSave.visibility = View.VISIBLE
+                    qrImage.setImageBitmap(generateQRCode(edt.text.toString()))
+                } else {
+                    Toast.makeText(this@MainActivity, "Please enter text!", Toast.LENGTH_SHORT).show()
+                }
+            }
+            btnSave.setOnClickListener {
+                if (writePermissionGranted) {
+                    btnSave.startAnimation(anim2)
+                    btnSave.visibility = View.GONE
+                    btnGenerate.startAnimation(anim1)
+                    btnGenerate.visibility = View.VISIBLE
+                    qrImage.visibility = View.GONE
+                    edt.text.clear()
+                    saveToExternalStorage(dspName, btm)
+                    Toast.makeText(this@MainActivity, "Saved", Toast.LENGTH_SHORT).show()
                 }
             }
         }
