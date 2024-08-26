@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">QRCode Creator</string>
     <string name="ma_lumot_kiriting">Ma\'lumot kiriting</string>
-    <string name="generate">Generate QR Code</string>
+    <string name="generate">QR kod yaratish</string>
     <string name="save">Save QR Code</string>
     <string name="qr_image">qrImage</string>
 </resources>

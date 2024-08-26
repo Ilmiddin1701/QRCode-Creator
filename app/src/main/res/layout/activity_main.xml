@@ -16,8 +16,8 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="15dp"
         android:layout_marginBottom="5dp"
-        android:visibility="gone"
-        android:contentDescription="@string/qr_image" />
+        android:contentDescription="@string/qr_image"
+        android:visibility="gone" />
 
     <FrameLayout
         android:id="@+id/edtFocus"
@@ -40,10 +40,10 @@
                 android:layout_height="wrap_content"
                 android:background="@android:color/transparent"
                 android:hint="@string/ma_lumot_kiriting"
+                android:importantForAutofill="no"
                 android:textColor="@color/black"
                 android:textColorHint="#8F8F8F"
                 android:textSize="20sp"
-                android:importantForAutofill="no"
                 tools:ignore="TextFields" />
         </ScrollView>
     </FrameLayout>
@@ -59,8 +59,8 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
             android:layout_marginEnd="10dp"
-            android:layout_weight="1"
             android:layout_marginBottom="10dp"
+            android:layout_weight="1"
             android:backgroundTint="#4CAF50"
             android:text="@string/generate"
             android:textColor="@color/white"
@@ -71,16 +71,16 @@
             android:id="@+id/btnSave"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_gravity="end"
             android:layout_marginStart="10dp"
             android:layout_marginEnd="10dp"
             android:layout_marginBottom="10dp"
             android:layout_weight="1"
-            android:layout_gravity="end"
-            android:visibility="gone"
             android:backgroundTint="#4CAF50"
             android:text="@string/save"
             android:textColor="@color/white"
             android:textSize="18sp"
+            android:visibility="gone"
             app:cornerRadius="10dp" />
     </LinearLayout>
 </LinearLayout>

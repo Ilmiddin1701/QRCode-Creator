@@ -13,10 +13,12 @@ import com.google.zxing.qrcode.QRCodeWriter
 import com.ilmiddin1701.qrcodemaster.databinding.ActivityMainBinding
 import java.io.IOException
 import android.Manifest
+import android.animation.Animator
 import android.content.ContentValues
 import android.content.pm.PackageManager
 import android.os.Build
 import android.provider.MediaStore
+import android.view.animation.Animation
 import android.view.animation.AnimationUtils
 import android.widget.Toast
 import androidx.activity.result.ActivityResultLauncher
@@ -50,14 +52,10 @@ class MainActivity : AppCompatActivity() {
                 writePermissionGranted = it[Manifest.permission.WRITE_EXTERNAL_STORAGE] ?: writePermissionGranted
             }
             updateOrRequestPermission()
-            val anim1 = AnimationUtils.loadAnimation(this@MainActivity, R.anim.anim1)
-            val anim2 = AnimationUtils.loadAnimation(this@MainActivity, R.anim.anim2)
             btnGenerate.setOnClickListener {
                 if (edt.text.toString().isNotEmpty()) {
                     qrImage.visibility = View.VISIBLE
-                    btnGenerate.startAnimation(anim2)
                     btnGenerate.visibility = View.GONE
-                    btnSave.startAnimation(anim1)
                     btnSave.visibility = View.VISIBLE
                     qrImage.setImageBitmap(generateQRCode(edt.text.toString()))
                 } else {
@@ -66,9 +64,7 @@ class MainActivity : AppCompatActivity() {
             }
             btnSave.setOnClickListener {
                 if (writePermissionGranted) {
-                    btnSave.startAnimation(anim2)
                     btnSave.visibility = View.GONE
-                    btnGenerate.startAnimation(anim1)
                     btnGenerate.visibility = View.VISIBLE
                     qrImage.visibility = View.GONE
                     edt.text.clear()
