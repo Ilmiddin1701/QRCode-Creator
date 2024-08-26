@@ -56,6 +56,7 @@ class MainActivity : AppCompatActivity() {
                 if (edt.text.toString().isNotEmpty()) {
                     qrImage.visibility = View.VISIBLE
                     btnGenerate.visibility = View.GONE
+
                     btnSave.visibility = View.VISIBLE
                     qrImage.setImageBitmap(generateQRCode(edt.text.toString()))
                 } else {
